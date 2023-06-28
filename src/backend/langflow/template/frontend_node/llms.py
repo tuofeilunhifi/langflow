@@ -42,7 +42,7 @@ class LLMFrontendNode(FrontendNode):
             LLMFrontendNode.format_azure_field(field)
         if name and "llama" in name.lower():
             LLMFrontendNode.format_llama_field(field)
-        SHOW_FIELDS = ["repo_id"]
+        SHOW_FIELDS = ["repo_id", "model_id"]
         if field.name in SHOW_FIELDS:
             field.show = True
 

@@ -65,6 +65,7 @@ llms:
   - Anthropic
   - ChatAnthropic
   - HuggingFaceHub
+  - HuggingFacePipeline
 memories:
   - ConversationBufferMemory
   - ConversationSummaryMemory
