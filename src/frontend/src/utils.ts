@@ -185,6 +185,7 @@ export const nodeIcons: {
   HNLoader: HackerNewsIcon,
   HuggingFaceHub: HugginFaceIcon,
   HuggingFacePipeline: HugginFaceIcon,
+  ChatGLM: HugginFaceIcon,
   HuggingFaceEmbeddings: HugginFaceIcon,
   IFixitLoader: IFixIcon,
   Meta: MetaIcon,
@@ -278,6 +279,9 @@ export const nodeIconsLucide: {
     ComponentType<SVGProps<SVGSVGElement>>
   >,
   HuggingFacePipeline: HugginFaceIcon as React.ForwardRefExoticComponent<
+    ComponentType<SVGProps<SVGSVGElement>>
+  >,
+  ChatGLM: HugginFaceIcon as React.ForwardRefExoticComponent<
     ComponentType<SVGProps<SVGSVGElement>>
   >,
   HuggingFaceEmbeddings: HugginFaceIcon as React.ForwardRefExoticComponent<

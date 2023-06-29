@@ -227,6 +227,12 @@ class CombineDocsChainNode(FrontendNode):
                 advanced=False,
             ),
             TemplateField(
+                field_type="PromptTemplate",
+                required=True,
+                show=True,
+                name="prompt_template",
+            ),
+            TemplateField(
                 field_type="BaseLanguageModel",
                 required=True,
                 show=True,

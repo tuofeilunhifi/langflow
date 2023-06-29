@@ -8,6 +8,7 @@ from pydantic import Field, root_validator
 from langchain.chains.question_answering import load_qa_chain
 from langflow.interface.utils import extract_input_variables_from_prompt
 from langchain.base_language import BaseLanguageModel
+from langchain.prompts.prompt import PromptTemplate
 
 DEFAULT_SUFFIX = """"
 Current conversation:
@@ -104,8 +105,8 @@ class CombineDocsChain(CustomChain):
         return "load_qa_chain"
 
     @classmethod
-    def initialize(cls, llm: BaseLanguageModel, chain_type: str):
-        return load_qa_chain(llm=llm, chain_type=chain_type)
+    def initialize(cls, llm: BaseLanguageModel, chain_type: str, prompt_template: PromptTemplate):
+        return load_qa_chain(llm=llm, chain_type=chain_type, prompt=prompt_template)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)

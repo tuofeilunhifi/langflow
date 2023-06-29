@@ -56,6 +56,10 @@ def import_by_type(_type: str, name: str) -> Any:
 
 def import_chat_llm(llm: str) -> BaseChatModel:
     """Import chat llm from llm name"""
+    from langflow.interface.llms.custom import CUSTOM_LLMS
+
+    if llm in CUSTOM_LLMS:
+        return CUSTOM_LLMS[llm]
     return import_class(f"langchain.chat_models.{llm}")
 
 
@@ -101,6 +105,10 @@ def import_agent(agent: str) -> Agent:
 
 def import_llm(llm: str) -> BaseLanguageModel:
     """Import llm from llm name"""
+    from langflow.interface.llms.custom import CUSTOM_LLMS
+
+    if llm in CUSTOM_LLMS:
+        return CUSTOM_LLMS[llm]
     return import_class(f"langchain.llms.{llm}")
 
 

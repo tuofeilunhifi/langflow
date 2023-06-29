@@ -19,6 +19,8 @@ class LLMCreator(LangChainTypeCreator):
     def type_to_loader_dict(self) -> Dict:
         if self.type_dict is None:
             self.type_dict = llm_type_to_cls_dict
+        from langflow.interface.llms.custom import CUSTOM_LLMS
+        self.type_dict.update(CUSTOM_LLMS)
         return self.type_dict
 
     def get_signature(self, name: str) -> Optional[Dict]:
