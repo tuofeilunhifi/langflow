@@ -17,6 +17,11 @@ class TextSplitterCreator(LangChainTypeCreator):
 
     @property
     def type_to_loader_dict(self) -> Dict:
+        if self.type_dict is None:
+            self.type_dict = textsplitter_type_to_cls_dict
+        from langflow.interface.text_splitters.custom import CUSTOM_TEXT_SPLITTERS
+        self.type_dict.update(CUSTOM_TEXT_SPLITTERS)
+        return self.type_dict
         return textsplitter_type_to_cls_dict
 
     def get_signature(self, name: str) -> Optional[Dict]:

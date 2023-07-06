@@ -23,6 +23,7 @@ class DocumentLoaderFrontNode(FrontendNode):
         "AirbyteJSONLoader": build_file_field(suffixes=[".json"], fileTypes=["json"]),
         "CoNLLULoader": build_file_field(suffixes=[".csv"], fileTypes=["csv"]),
         "CSVLoader": build_file_field(suffixes=[".csv"], fileTypes=["csv"]),
+        "QACSVLoader": build_file_field(suffixes=[".csv"], fileTypes=["csv"]),
         "UnstructuredEmailLoader": build_file_field(
             suffixes=[".eml"], fileTypes=["eml"]
         ),

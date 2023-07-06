@@ -17,16 +17,17 @@ class TextSplittersFrontendNode(FrontendNode):
             name = "separator"
         elif self.template.type_name == "RecursiveCharacterTextSplitter":
             name = "separators"
-        self.template.add_field(
-            TemplateField(
-                field_type="str",
-                required=True,
-                show=True,
-                value=".",
-                name=name,
-                display_name="Separator",
+        if not self.template.type_name == "IdentitySplitter":
+            self.template.add_field(
+                TemplateField(
+                    field_type="str",
+                    required=True,
+                    show=True,
+                    value=".",
+                    name=name,
+                    display_name="Separator",
+                )
             )
-        )
         self.template.add_field(
             TemplateField(
                 field_type="int",

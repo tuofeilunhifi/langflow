@@ -187,6 +187,7 @@ export const nodeIcons: {
   HuggingFacePipeline: HugginFaceIcon,
   ChatGLM: HugginFaceIcon,
   HuggingFaceEmbeddings: HugginFaceIcon,
+  HuggingFaceEmbeddingsSpecb: HugginFaceIcon,
   IFixitLoader: IFixIcon,
   Meta: MetaIcon,
   Midjourney: MidjourneyIcon,
@@ -285,6 +286,9 @@ export const nodeIconsLucide: {
     ComponentType<SVGProps<SVGSVGElement>>
   >,
   HuggingFaceEmbeddings: HugginFaceIcon as React.ForwardRefExoticComponent<
+    ComponentType<SVGProps<SVGSVGElement>>
+  >,
+  HuggingFaceEmbeddingsSpecb: HugginFaceIcon as React.ForwardRefExoticComponent<
     ComponentType<SVGProps<SVGSVGElement>>
   >,
   IFixitLoader: IFixIcon as React.ForwardRefExoticComponent<

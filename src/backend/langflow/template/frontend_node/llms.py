@@ -77,6 +77,15 @@ class LLMFrontendNode(FrontendNode):
             "model_file",
             "model_type",
             "deployment_name",
+            "top_p",
+            "max_tokens"
         ]:
             field.advanced = False
             field.show = True
+        elif field.name in [
+            "authorization",
+            "hosts",
+        ]:
+            field.advanced = True
+            field.show = True
+            field.password is True

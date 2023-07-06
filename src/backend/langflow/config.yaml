@@ -24,6 +24,7 @@ documentloaders:
   - AirbyteJSONLoader
   - CoNLLULoader
   - CSVLoader
+  - QACSVLoader
   - UnstructuredEmailLoader
   - EverNoteLoader
   - FacebookChatLoader
@@ -53,6 +54,7 @@ documentloaders:
 embeddings:
   - OpenAIEmbeddings
   - HuggingFaceEmbeddings
+  - HuggingFaceEmbeddingsSpecb
   - CohereEmbeddings
 llms:
   - OpenAI
@@ -78,6 +80,7 @@ prompts:
 textsplitters:
   - CharacterTextSplitter
   - RecursiveCharacterTextSplitter
+  - IdentitySplitter
   # - LatexTextSplitter
   # - PythonCodeTextSplitter
 toolkits:

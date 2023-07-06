@@ -133,6 +133,10 @@ def import_chain(chain: str) -> Type[Chain]:
 
 def import_embedding(embedding: str) -> Any:
     """Import embedding from embedding name"""
+    from langflow.interface.embeddings.custom import CUSTOM_EMBEDDINGS
+
+    if embedding in CUSTOM_EMBEDDINGS:
+        return CUSTOM_EMBEDDINGS[embedding]
     return import_class(f"langchain.embeddings.{embedding}")
 
 
@@ -143,11 +147,19 @@ def import_vectorstore(vectorstore: str) -> Any:
 
 def import_documentloader(documentloader: str) -> Any:
     """Import documentloader from documentloader name"""
+    from langflow.interface.document_loaders.custom import CUSTOM_DOCUMENT_LOADERS
+
+    if documentloader in CUSTOM_DOCUMENT_LOADERS:
+        return CUSTOM_DOCUMENT_LOADERS[documentloader]
     return import_class(f"langchain.document_loaders.{documentloader}")
 
 
 def import_textsplitter(textsplitter: str) -> Any:
     """Import textsplitter from textsplitter name"""
+    from langflow.interface.text_splitters.custom import CUSTOM_TEXT_SPLITTERS
+
+    if textsplitter in CUSTOM_TEXT_SPLITTERS:
+        return CUSTOM_TEXT_SPLITTERS[textsplitter]
     return import_class(f"langchain.text_splitter.{textsplitter}")
 
 

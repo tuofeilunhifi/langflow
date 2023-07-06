@@ -8,6 +8,9 @@ FORCE_SHOW_FIELDS = [
     "headers",
     "max_value_length",
     "max_tokens",
+    "top_p",
+    "authorization",
+    "hosts",
 ]
 
 DEFAULT_PROMPT = """

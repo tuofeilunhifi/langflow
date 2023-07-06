@@ -5508,17 +5508,6 @@ files = [
     {file = "semver-2.13.0.tar.gz", hash = "sha256:fa0fe2722ee1c3f57eac478820c3a5ae2f624af8264cbdf9000c980ff7f75e3f"},
 ]
 
-[[package]]
-name = "sentence-transformers"
-version = "2.2.2"
-description = "Multilingual text embeddings"
-category = "main"
-optional = false
-python-versions = ">=3.6.0"
-files = [
-    {file = "sentence-transformers-2.2.2.tar.gz", hash = "sha256:dbc60163b27de21076c9a30d24b5b7b6fa05141d68cf2553fa9a77bf79a29136"},
-]
-
 [package.dependencies]
 huggingface-hub = ">=0.4.0"
 nltk = "*"

@@ -17,7 +17,11 @@ class DocumentLoaderCreator(LangChainTypeCreator):
 
     @property
     def type_to_loader_dict(self) -> Dict:
-        return documentloaders_type_to_cls_dict
+        if self.type_dict is None:
+            self.type_dict = documentloaders_type_to_cls_dict
+        from langflow.interface.document_loaders.custom import CUSTOM_DOCUMENT_LOADERS
+        self.type_dict.update(CUSTOM_DOCUMENT_LOADERS)
+        return self.type_dict
 
     def get_signature(self, name: str) -> Optional[Dict]:
         """Get the signature of a document loader."""

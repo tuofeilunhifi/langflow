@@ -14,7 +14,11 @@ class EmbeddingCreator(LangChainTypeCreator):
 
     @property
     def type_to_loader_dict(self) -> Dict:
-        return embedding_type_to_cls_dict
+        if self.type_dict is None:
+            self.type_dict = embedding_type_to_cls_dict
+        from langflow.interface.embeddings.custom import CUSTOM_EMBEDDINGS
+        self.type_dict.update(CUSTOM_EMBEDDINGS)
+        return self.type_dict
 
     @property
     def frontend_node_class(self) -> Type[FrontendNode]:
