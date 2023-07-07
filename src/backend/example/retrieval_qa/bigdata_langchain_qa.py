@@ -22,6 +22,8 @@ import pandas as pd
 
 from sentence_transformers import SentenceTransformer
 
+from easy_retrieval_docarrayindex_mini import EasyRetrievalDocArrayIndexMini
+
 class IdentitySplitter(TextSplitter):
     """Interface for splitting text into chunks."""
 
@@ -234,10 +236,14 @@ if __name__ == '__main__':
     parser.add_argument('--file_path', required=True, type=str)
     parser.add_argument('--llm', type=str, default='chatglm')
     parser.add_argument('--embedding', type=str, default='sgpt')
+    parser.add_argument('--oss_path', required=True, type=str, default='oss://xxx/')
+    parser.add_argument('--oss_config', required=True, type=str, default='xxx/.ossutilconfig')
     args = parser.parse_args()
 
     # load docs
     filepath = args.file_path
+    oss_path = args.oss_path
+    oss_config = args.oss_config
 
     # LLM name
     LLM_TYPE = args.llm
@@ -300,7 +306,16 @@ if __name__ == '__main__':
     print("loading documents done")
 
     print("embedding start")
-    docsearch = DocArrayInMemorySearch.from_documents(docs, embeddings)
+    # docsearch = DocArrayInMemorySearch.from_documents(docs, embeddings)
+
+    docsearch = EasyRetrievalDocArrayIndexMini.from_documents(
+        database_name='dataworks',
+        docs=docs,
+        embedding=embeddings,
+        root_path=oss_path,
+        oss_config_file=oss_config,
+    )
+
     print("embedding done")
 
     print("loading qa start")
