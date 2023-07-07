@@ -2,17 +2,17 @@ import os
 import torch
 from models import ChatGLM, QianWen
 import argparse
-from typing import Any
-import csv
 from typing import Any, Dict, List, Optional
+import copy
 
 from langchain.vectorstores import FAISS, DocArrayInMemorySearch
 
 from langchain.embeddings.huggingface import HuggingFaceEmbeddings
 from typing import List, Tuple
 import numpy as np
-from langchain.document_loaders import UnstructuredFileLoader, TextLoader
+from langchain.document_loaders import UnstructuredFileLoader, TextLoader, CSVLoader
 from textsplitter import ChineseTextSplitter
+from langchain.text_splitter import TextSplitter
 from loader import UnstructuredPaddlePDFLoader, UnstructuredPaddleImageLoader
 from langchain.docstore.document import Document
 from langchain.prompts.prompt import PromptTemplate
@@ -21,6 +21,14 @@ from langchain.document_loaders.base import BaseLoader
 import pandas as pd
 
 from sentence_transformers import SentenceTransformer
+
+class IdentitySplitter(TextSplitter):
+    """Interface for splitting text into chunks."""
+
+    def split_text(self, text: str) -> List[str]:
+        sent_list = [text]
+        return sent_list
+
 
 class QACSVLoader(BaseLoader):
     """Loads a CSV file into a list of documents.
@@ -287,7 +295,8 @@ if __name__ == '__main__':
     print("loading documents start")
     # docs = load_file(filepath, sentence_size=SENTENCE_SIZE)
     loader = QACSVLoader(filepath)
-    docs = loader.load()
+    text_splitter = IdentitySplitter()
+    docs = text_splitter.split_documents(loader.load())
     print("loading documents done")
 
     print("embedding start")
