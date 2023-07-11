@@ -194,7 +194,39 @@ class VectorStoreFrontendNode(FrontendNode):
                 value="",
             )
             extra_fields.extend((extra_field, extra_field2, extra_field3, extra_field4))
-
+        elif self.template.type_name == "DocArrayInMemorySearchOSS":
+            extra_field = TemplateField(
+                name="database_name",
+                field_type="str",
+                required=True,
+                placeholder="",
+                show=True,
+                advanced=True,
+                multiline=False,
+                value="",
+            )
+            extra_field2 = TemplateField(
+                name="root_path",
+                field_type="str",
+                required=True,
+                placeholder="",
+                show=True,
+                advanced=True,
+                multiline=False,
+                value="",
+            )
+            extra_field3 = TemplateField(
+                name="oss_config_file",
+                field_type="str",
+                required=True,
+                placeholder="",
+                show=True,
+                advanced=True,
+                multiline=False,
+                value="",
+            )
+            extra_fields.extend((extra_field2, extra_field3))
+        
         if extra_fields:
             for field in extra_fields:
                 self.template.add_field(field)
@@ -224,6 +256,7 @@ class VectorStoreFrontendNode(FrontendNode):
             "mongodb_atlas_cluster_uri",
             "collection_name",
             "db_name",
+            "database_name",
         ]
         advanced_fields = [
             "n_dim",
@@ -244,6 +277,8 @@ class VectorStoreFrontendNode(FrontendNode):
             "pinecone_env",
             "client_kwargs",
             "search_kwargs",
+            "oss_config_file",
+            "root_path",
         ]
 
         # Check and set field attributes

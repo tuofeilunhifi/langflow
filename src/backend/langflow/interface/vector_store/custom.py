@@ -1,6 +1,7 @@
+from __future__ import annotations
 import os
-from typing import Dict, Optional, overload, Iterable, Any, List, Literal
-from ossio import ENVOSSIO, get_oss_config
+from typing import Dict, Optional, Any, List, Literal
+from langflow.interface.vector_store.ossio import ENVOSSIO, get_oss_config
 from langchain.embeddings.base import Embeddings
 from langchain.docstore.document import Document
 from langchain.vectorstores.docarray.base import (
@@ -81,7 +82,7 @@ class DocArrayInMemorySearchOSS(DocArrayIndex):
             ENVOSSIO.copy(local_name, path)
         return {'save': 'Done'}
 
-    # -------------------------------------------------------------------------------#
+    #-------------------------------------------------------------------------------#
     
     @classmethod
     def from_params(
@@ -95,7 +96,8 @@ class DocArrayInMemorySearchOSS(DocArrayIndex):
             "cosine_sim", "euclidian_dist", "sgeuclidean_dist"
         ] = "cosine_sim",
         **kwargs: Any,
-    ):
+    ) -> DocArrayInMemorySearchOSS:
+
         """Initialize DocArrayInMemorySearchOSS store."""
         _check_docarray_import()
         from docarray.index import InMemoryExactNNIndex
@@ -176,4 +178,8 @@ class DocArrayInMemorySearchOSS(DocArrayIndex):
                                 root_path=root_path,
                                 oss_config=oss_config,
                                 oss_config_file=oss_config_file,**kwargs)
+
     
+CUSTOM_VECTOR_STORES = {
+    "DocArrayInMemorySearchOSS": DocArrayInMemorySearchOSS,
+}

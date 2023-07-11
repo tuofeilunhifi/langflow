@@ -167,6 +167,8 @@ export const nodeIcons: {
   >;
 } = {
   Chroma: ChromaIcon,
+  DocArrayInMemorySearchOSS: ChromaIcon,
+  DocArrayInMemorySearch: ChromaIcon,
   AirbyteJSONLoader: AirbyteIcon,
   // SerpAPIWrapper: SerperIcon,
   // AZLyricsLoader: AzIcon,
@@ -232,6 +234,12 @@ export const nodeIconsLucide: {
   >;
 } = {
   Chroma: ChromaIcon as React.ForwardRefExoticComponent<
+    ComponentType<SVGProps<SVGSVGElement>>
+  >,
+  DocArrayInMemorySearchOSS: ChromaIcon as React.ForwardRefExoticComponent<
+    ComponentType<SVGProps<SVGSVGElement>>
+  >,
+  DocArrayInMemorySearch: ChromaIcon as React.ForwardRefExoticComponent<
     ComponentType<SVGProps<SVGSVGElement>>
   >,
   AirbyteJSONLoader: AirbyteIcon as React.ForwardRefExoticComponent<

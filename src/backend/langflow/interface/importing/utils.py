@@ -142,6 +142,10 @@ def import_embedding(embedding: str) -> Any:
 
 def import_vectorstore(vectorstore: str) -> Any:
     """Import vectorstore from vectorstore name"""
+    from langflow.interface.vector_store.custom import CUSTOM_VECTOR_STORES
+
+    if vectorstore in CUSTOM_VECTOR_STORES:
+        return CUSTOM_VECTOR_STORES[vectorstore]
     return import_class(f"langchain.vectorstores.{vectorstore}")
 
 

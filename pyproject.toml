@@ -53,7 +53,7 @@ langchain-serve = { version = ">0.0.39", optional = true }
 qdrant-client = "^1.2.0"
 websockets = "^10.3"
 weaviate-client = "^3.21.0"
-jina = "3.15.2"
+jina = "3.18.0"
 ctransformers = "^0.2.2"
 cohere = "^4.6.0"
 python-multipart = "^0.0.6"

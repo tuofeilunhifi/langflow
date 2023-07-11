@@ -26,6 +26,8 @@ class VectorstoreCreator(LangChainTypeCreator):
                 )
                 for vectorstore_name in vectorstores.__all__
             }
+        from langflow.interface.vector_store.custom import CUSTOM_VECTOR_STORES
+        self.type_dict.update(CUSTOM_VECTOR_STORES)
         return self.type_dict
 
     def get_signature(self, name: str) -> Optional[Dict]:

@@ -22,7 +22,7 @@ import pandas as pd
 
 from sentence_transformers import SentenceTransformer
 
-from easy_retrieval_docarrayindex_mini import EasyRetrievalDocArrayIndexMini
+from easy_retrieval_docarrayindex_mini import DocArrayInMemorySearchOSS
 
 class IdentitySplitter(TextSplitter):
     """Interface for splitting text into chunks."""
@@ -308,7 +308,7 @@ if __name__ == '__main__':
     print("embedding start")
     # docsearch = DocArrayInMemorySearch.from_documents(docs, embeddings)
 
-    docsearch = EasyRetrievalDocArrayIndexMini.from_documents(
+    docsearch = DocArrayInMemorySearchOSS.from_documents(
         database_name='dataworks',
         docs=docs,
         embedding=embeddings,
